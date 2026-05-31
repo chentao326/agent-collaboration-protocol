@@ -278,6 +278,19 @@
 - 不要把用户的一句话直接丢给执行者
 - prompt 必须包含受众、格式、口吻、禁止事项、交付格式
 - 如果用户需求过于模糊，先追问再执行
+- **需求识别须匹配到以下九类任务之一，决定默认执行者和必填 prompt 字段：**
+
+| 任务类型 | 子类型 | 识别信号 | 默认执行者 | 必填 prompt 字段 |
+|----------|--------|----------|------------|-----------------|
+| 内容创作 | 长图文/博客/文档/演讲稿 | "写一篇"、"帮我整理"、"做一篇长文" | Claude Code | audience, format_layout, tone_style, forbidden_items |
+| 代码工程 | 开发/Bug修复/重构/审查/部署 | "改代码"、"加功能"、"修bug"、"部署" | Claude Code | target_files, expected_behavior, test_requirements |
+| 视觉设计 | AI绘图/架构图/ASCII/Excalidraw/原型 | "画一个"、"生成图"、"做个设计" | Codex | visual_style, dimensions, output_format |
+| 视频动画 | Remotion/Manim/ASCII视频/图片转视频 | "做视频"、"动画"、"转成视频" | Claude Code | duration, style, resolution, output_format |
+| 音频生成 | 音乐/TTS/音效 | "生成音乐"、"文字转语音" | Codex | audio_type, duration, style_mood |
+| 研究分析 | 技术调研/市场分析/论文/趋势 | "调研"、"分析"、"查论文" | Claude Code | research_scope, depth, output_format |
+| 数据处理 | 清洗/转换/统计/Jupyter/OCR | "处理数据"、"转换格式" | Scripts | input_format, output_format, transformation_rules |
+| 发布分发 | 飞书/知乎/GitHub/邮件 | "发布到"、"同步到"、"推送" | Hermes | target_platforms, content_source, publish_settings |
+| 自动化 | 定时任务/Webhook/Agent流水线 | "定时"、"每天"、"自动"、"监听" | Hermes | schedule, trigger, actions |
 
 ### 阶段 2：任务拆分与编排
 

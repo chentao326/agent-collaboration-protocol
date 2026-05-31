@@ -211,31 +211,90 @@ roles:
       - "完整性：所有必需的文件是否都包含？"
 
 # ==================== 任务类型定义 ====================
+# 九类任务覆盖 Hermes 全能力域。Hermes 从用户一句话中识别类型，决定默认执行者和必填字段。
 task_types:
   content_creation:
     name: "内容创作"
+    description: "长图文、博客、技术文档、知识库文章、演讲稿、小红书/公众号"
     default_executor: "claude_code"
     required_prompt_fields:
       - "audience"
       - "format_layout"
       - "tone_style"
       - "forbidden_items"
-    
-  code_modification:
-    name: "代码修改"
+  
+  code_engineering:
+    name: "代码工程"
+    description: "功能开发、Bug修复、重构、代码审查、项目初始化、部署"
     default_executor: "claude_code"
     required_prompt_fields:
       - "target_files"
       - "expected_behavior"
       - "test_requirements"
-    
+
+  visual_design:
+    name: "视觉设计"
+    description: "AI绘图(ComfyUI)、架构图、信息图、ASCII艺术、像素画、Excalidraw、HTML原型/设计稿"
+    default_executor: "codex"
+    required_prompt_fields:
+      - "visual_style"
+      - "dimensions"
+      - "output_format"
+
+  video_animation:
+    name: "视频动画"
+    description: "Remotion视频、Manim数学动画、ASCII视频、HyperFrames、图片转视频"
+    default_executor: "claude_code"
+    required_prompt_fields:
+      - "duration"
+      - "style"
+      - "resolution"
+      - "output_format"
+
+  audio_generation:
+    name: "音频生成"
+    description: "音乐生成(Suno/HeartMuLa)、语音合成(TTS)、音效"
+    default_executor: "codex"
+    required_prompt_fields:
+      - "audio_type"
+      - "duration"
+      - "style_mood"
+
+  research_analysis:
+    name: "研究分析"
+    description: "技术调研、市场分析、论文分析(arXiv)、竞品分析、趋势追踪"
+    default_executor: "claude_code"
+    required_prompt_fields:
+      - "research_scope"
+      - "depth"
+      - "output_format"
+
   data_processing:
     name: "数据处理"
+    description: "数据清洗、格式转换、统计分析、Jupyter分析、OCR"
     default_executor: "scripts"
     required_prompt_fields:
       - "input_format"
       - "output_format"
       - "transformation_rules"
+
+  publishing_distribution:
+    name: "发布分发"
+    description: "飞书发布、知乎发布、GitHub发布、多平台同步、邮件"
+    default_executor: "hermes"
+    required_prompt_fields:
+      - "target_platforms"
+      - "content_source"
+      - "publish_settings"
+
+  automation:
+    name: "自动化编排"
+    description: "定时任务(Cron)、Webhook订阅、多Agent流水线、Gateway运维"
+    default_executor: "hermes"
+    required_prompt_fields:
+      - "schedule"
+      - "trigger"
+      - "actions"
 
 # ==================== 工作流模板 ====================
 workflow_templates:
