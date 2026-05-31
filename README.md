@@ -1,4 +1,6 @@
-# Agent Collaboration Protocol · 多 Agent 协作工作流协议
+[![Repo](https://img.shields.io/badge/github-agent--playbook-blue)](https://github.com/chentao326/agent-playbook)
+
+# Agent Playbook · 多 Agent 协作工作流协议
 
 > **差别不在能力，在位置。**
 > **The difference is not in capability, but in position.**
